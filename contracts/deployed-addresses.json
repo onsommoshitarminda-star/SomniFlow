@@ -6,24 +6,17 @@
     "sessionKeyModule": "0x5d3bd2E5D1ac904E5B47e1292E8b47E3358d90Fa",
     "deploymentBlock": 8956118,
     "deploymentDate": "2025-08-10",
-    "deployer": "0xB1Fd8ccd8b66a3DeDcD5fFef1Edb22fbCA01c66b"
+    "deployer": "0xB1Fd8ccd8b66a3DeDcD5fFef1Edb22fbCA01c66b",
+    "RealBridge": "0x2D99dC1d3B5f9eCFa4f740bDE916d5d17b8b00f8"
   },
-  "xlayer": {
-    "chainId": 196,
+  "somnia_testnet": {
+    "chainId": 50312,
     "entryPoint": "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789",
     "factory": "0x0000000000000000000000000000000000000000",
     "sessionKeyModule": "0x0000000000000000000000000000000000000000",
     "deploymentBlock": 0,
     "deploymentDate": "",
-    "deployer": ""
-  },
-  "xlayer_testnet": {
-    "chainId": 195,
-    "entryPoint": "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789",
-    "factory": "0x7cEb6617962Dd76E96b3227352f0ee9f83FCD2B7",
-    "sessionKeyModule": "0x0000000000000000000000000000000000000000",
-    "deploymentBlock": 0,
-    "deploymentDate": "2025-08-10",
-    "deployer": ""
+    "deployer": "",
+    "RealBridge": "0x21dC669b4486f41131A800935c21EDf6Edd4dd71"
   }
 }
