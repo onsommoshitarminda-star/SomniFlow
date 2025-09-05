@@ -14,7 +14,7 @@ interface BridgeInterfaceProps {
 
 export function BridgeInterface({ userAddress, userEmail, onBridgeComplete }: BridgeInterfaceProps) {
   const [fromNetwork, setFromNetwork] = useState('sepolia');
-  const [toNetwork, setToNetwork] = useState('xlayer');
+  const [toNetwork, setToNetwork] = useState('somnia');
   const [amount, setAmount] = useState('');
   const [quote, setQuote] = useState<BridgeQuote | null>(null);
   const [isLoading, setIsLoading] = useState(false);

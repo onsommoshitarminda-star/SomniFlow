@@ -14,6 +14,15 @@ out/
 build/
 dist/
 
+# Hardhat / Solidity artifacts and cache
+artifacts/
+cache/
+node_modules/
+
+# Optional: dotenv / local config
+.env
+
+
 # Production
 *.pid
 *.seed
