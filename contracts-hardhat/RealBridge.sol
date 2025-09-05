@@ -61,7 +61,7 @@ contract RealBridge is ReentrancyGuard, Ownable {
     mapping(address => bytes32[]) public userBridges;
     
     uint256 public constant CHAIN_ID_SEPOLIA = 11155111;
-    uint256 public constant CHAIN_ID_XLAYER = 195;
+    uint256 public constant CHAIN_ID_SOMNIA = 50312;
     
     address public bridgeOperator;
     uint256 public totalBridged;
@@ -71,8 +71,8 @@ contract RealBridge is ReentrancyGuard, Ownable {
 
     constructor() Ownable(msg.sender) {
         // Initialize bridge configs
-        // Sepolia -> X Layer (ETH -> OKB)
-        bridgeConfigs[CHAIN_ID_XLAYER] = BridgeConfig({
+        // Sepolia -> Somnia (ETH -> SOM/native)
+        bridgeConfigs[CHAIN_ID_SOMNIA] = BridgeConfig({
             minAmount: 0.001 ether,
             maxAmount: 10 ether,
             feeRate: 50, // 0.5%

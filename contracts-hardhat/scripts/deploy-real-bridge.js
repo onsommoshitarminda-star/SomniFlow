@@ -25,13 +25,17 @@ async function main() {
   const balance = await realBridge.getBalance();
   console.log("💎 Bridge contract balance:", ethers.formatEther(balance), "ETH");
 
-  // Log configuration
-  const sepoliaConfig = await realBridge.bridgeConfigs(195); // X Layer testnet
-  console.log("🔧 Bridge configuration (Sepolia -> X Layer):");
-  console.log("- Min amount:", ethers.formatEther(sepoliaConfig.minAmount), "ETH");
-  console.log("- Max amount:", ethers.formatEther(sepoliaConfig.maxAmount), "ETH");
-  console.log("- Fee rate:", sepoliaConfig.feeRate / 100, "%");
-  console.log("- Enabled:", sepoliaConfig.enabled);
+  // Somnia testnet (50312)
+  try {
+    const somniaConfig = await realBridge.bridgeConfigs(50312);
+    console.log("🔧 Bridge configuration for Somnia (dest=50312):");
+    console.log("- Min amount:", ethers.formatEther(somniaConfig.minAmount), "ETH");
+    console.log("- Max amount:", ethers.formatEther(somniaConfig.maxAmount), "ETH");
+    console.log("- Fee rate:", somniaConfig.feeRate / 100, "%");
+    console.log("- Enabled:", somniaConfig.enabled);
+  } catch (e) {
+    console.log("ℹ️ Somnia bridge config not set or unreadable on this chain.");
+  }
 
   return {
     address,

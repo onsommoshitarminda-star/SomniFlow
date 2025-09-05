@@ -1,4 +1,5 @@
 require("@nomicfoundation/hardhat-ethers");
+require("dotenv").config({ path: "./.env.local" });
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -9,27 +10,25 @@ module.exports = {
   networks: {
     sepolia: {
       url: "https://eth-sepolia.public.blastapi.io",
-      accounts: ["0x4883a8fd611148c2eeda5397693e12fba45b939e22375d4f9a469b62d1f1c882"]
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : []
     },
-    xlayer: {
-      url: "https://testrpc.xlayer.tech",
-      accounts: ["0x4883a8fd611148c2eeda5397693e12fba45b939e22375d4f9a469b62d1f1c882"],
-      gasPrice: 20000000000, // 20 gwei
+    somnia: {
+      url: "https://dream-rpc.somnia.network",
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : []
     }
   },
   etherscan: {
     apiKey: {
-      sepolia: process.env.ETHERSCAN_API_KEY,
-      xlayer: process.env.XLAYER_API_KEY
+      somnia: "string", 
     },
     customChains: [
       {
-        network: "xlayer",
-        chainId: 195,
+        network: "somnia",
+        chainId: 50312,
         urls: {
-          apiURL: "https://www.okx.com/explorer/xlayer-test/api",
-          browserURL: "https://www.okx.com/explorer/xlayer-test"
-        }
+          apiURL: "https://shannon-explorer.somnia.network/api",
+          browserURL: "https://shannon-explorer.somnia.network",
+        },
       }
     ]
   }

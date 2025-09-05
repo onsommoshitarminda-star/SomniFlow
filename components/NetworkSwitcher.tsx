@@ -99,6 +99,7 @@ function getNetworkColor(networkId: string): string {
   const colors = {
     sepolia: 'bg-blue-500',
     xlayer: 'bg-orange-500',
+    somnia: 'bg-purple-500',
   };
   return colors[networkId as keyof typeof colors] || 'bg-gray-500';
 }
