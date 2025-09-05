@@ -1,7 +1,7 @@
-# OneClick DeFi - Email to DeFi in One Click
+# SomniFlow - Email to DeFi in One Click
 
 <div align="center">
-  <img src="https://img.shields.io/badge/OKX-Hackathon%20Winner-gold" alt="OKX Hackathon Winner">
+  <img src="https://img.shields.io/badge/Somnia-Hackathon%20Participant-purple" alt="Somnia Hackathon">
   <img src="https://img.shields.io/badge/WebAuthn-Enabled-green" alt="WebAuthn">
   <img src="https://img.shields.io/badge/ERC--4337-Account%20Abstraction-blue" alt="ERC-4337">
   <img src="https://img.shields.io/badge/Chains-60%2B-purple" alt="60+ Chains">
@@ -9,7 +9,7 @@
 
 ## 🚀 Overview
 
-OneClick DeFi revolutionizes Web3 onboarding by enabling users to access DeFi in just 30 seconds using their email and device biometrics. No seed phrases, no browser extensions, no gas fees - just pure DeFi accessibility.
+SomniFlow revolutionizes Web3 onboarding by enabling users to access DeFi in just 30 seconds using their email and device biometrics. No seed phrases, no browser extensions, no gas fees - just pure DeFi accessibility.
 
 ### 🎯 Key Innovation
 
@@ -17,7 +17,7 @@ OneClick DeFi revolutionizes Web3 onboarding by enabling users to access DeFi in
 - **WebAuthn/Passkey** for hardware-secured authentication
 - **ERC-4337 Account Abstraction** for gasless transactions
 - **Google OAuth** for seamless identity management
-- **OKX DEX Aggregation** for optimal cross-chain swaps
+- **Somnia Bridge Integration** for streamlined cross-chain transfers to Somnia Testnet
 
 ### 💡 Problem We Solve
 
@@ -28,7 +28,7 @@ Traditional Web3 onboarding is broken:
 
 ### ✨ Our Solution
 
-OneClick DeFi provides:
+SomniFlow provides:
 - **30-second onboarding** using just email and fingerprint
 - **Zero gas fees** through sponsored transactions
 - **Hardware-level security** using device secure enclave
@@ -57,7 +57,7 @@ OneClick DeFi provides:
 ### Core Features
 - **Email + Biometric Login**: Use Google account + fingerprint/Face ID
 - **Gasless Transactions**: All fees sponsored through ERC-4337
-- **Multi-Chain Swaps**: Access 60+ chains via OKX DEX
+- **Cross-Chain Bridge**: Seamless bridging to Somnia Testnet
 - **Smart Account**: Self-custodial wallet with advanced features
 - **Account Recovery**: Email-based recovery without seed phrases
 
@@ -100,7 +100,7 @@ OneClick DeFi provides:
 ├─────────────────────────────────────────────────────────────────┤
 │                      Blockchain Layer                            │
 │  ┌──────────────────────────────────────────────────┐          │
-│  │            Smart Contracts (XLayer/Polygon)       │          │
+│  │            Smart Contracts (Somnia Testnet)       │          │
 │  ├──────────────────────────────────────────────────┤          │
 │  │  OneClickAccount.sol    - ERC-4337 Smart Account │          │
 │  │  OneClickFactory.sol    - CREATE2 Deployment     │          │
@@ -114,8 +114,8 @@ OneClick DeFi provides:
 ├─────────────────────────────────────────────────────────────────┤
 │                    Infrastructure Layer                          │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐         │
-│  │ Pimlico      │  │  OKX DEX API │  │   XLayer RPC │         │
-│  │ (Bundler)    │  │ (Aggregator) │  │   (Network)  │         │
+│  │ Pimlico      │  │ Somnia Bridge│  │ Somnia RPC   │         │
+│  │ (Bundler)    │  │ /Integrations│  │ (Network)    │         │
 │  └──────────────┘  └──────────────┘  └──────────────┘         │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -126,7 +126,7 @@ OneClick DeFi provides:
 - **Authentication**: NextAuth.js, Google OAuth, WebAuthn API
 - **Blockchain**: Viem, Wagmi, ERC-4337 (Account Abstraction)
 - **Smart Contracts**: Solidity 0.8.19, Foundry/Hardhat
-- **Infrastructure**: Pimlico (Bundler), OKX DEX API, XLayer
+- **Infrastructure**: Pimlico (Bundler), Somnia RPC/Bridge
 - **Security**: P256 ECDSA, WebAuthn, Hardware Security Modules
 - **Database**: Prisma with PostgreSQL/SQLite
 - **Deployment**: Vercel, IPFS, Contract verification
@@ -236,7 +236,7 @@ if (strictDomainCheck) {
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/oneclick-defi.git
+git https://github.com/onsommoshitarminda-star/SomniFlow.git
 cd oneclick-defi
 
 # Install dependencies
@@ -293,21 +293,15 @@ EMAIL_SERVER_USER=your-email@gmail.com
 EMAIL_SERVER_PASSWORD=your-app-password
 EMAIL_FROM=noreply@oneclick-defi.com
 
-# Blockchain
-NEXT_PUBLIC_CHAIN_ID=195
-NEXT_PUBLIC_RPC_URL=https://testrpc.xlayer.tech
-NEXT_PUBLIC_BUNDLER_URL=https://api.pimlico.io/v2/xlayer-testnet/rpc?apikey=YOUR_KEY
-NEXT_PUBLIC_PAYMASTER_URL=https://api.pimlico.io/v2/xlayer-testnet/rpc?apikey=YOUR_KEY
+# Blockchain (Somnia Testnet)
+NEXT_PUBLIC_CHAIN_ID=50312
+NEXT_PUBLIC_RPC_URL=https://dream-rpc.somnia.network
+NEXT_PUBLIC_BUNDLER_URL=https://api.pimlico.io/v2/somnia-testnet/rpc?apikey=YOUR_KEY
+NEXT_PUBLIC_PAYMASTER_URL=https://api.pimlico.io/v2/somnia-testnet/rpc?apikey=YOUR_KEY
 
 # Smart Contract Addresses
 NEXT_PUBLIC_FACTORY_ADDRESS=0x7cEb6617962Dd76E96b3227352f0ee9f83FCD2B7
 NEXT_PUBLIC_ENTRYPOINT_ADDRESS=0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789
-
-# OKX DEX API
-NEXT_PUBLIC_OKX_API_KEY=your-api-key
-NEXT_PUBLIC_OKX_SECRET_KEY=your-secret-key
-NEXT_PUBLIC_OKX_PASSPHRASE=your-passphrase
-NEXT_PUBLIC_OKX_PROJECT_ID=your-project-id
 
 # Database
 DATABASE_URL="file:./dev.db"
@@ -464,19 +458,14 @@ contract OneClickAccount is IAccount {
 ```bash
 cd contracts
 
-# Deploy to XLayer Testnet
+# Deploy to Somnia Testnet
 forge script script/Deploy.s.sol:DeployScript \
-  --rpc-url https://testrpc.xlayer.tech \
+  --rpc-url https://dream-rpc.somnia.network \
   --private-key $PRIVATE_KEY \
   --broadcast \
   --verify
 
-# Deploy to XLayer Mainnet
-forge script script/Deploy.s.sol:DeployScript \
-  --rpc-url https://rpc.xlayer.tech \
-  --private-key $PRIVATE_KEY \
-  --broadcast \
-  --verify
+# (Optional) Other networks as needed
 ```
 
 #### Using Hardhat (Alternative)
@@ -488,7 +477,7 @@ cd contracts
 npx hardhat compile
 
 # Deploy
-npx hardhat run scripts/deploy.js --network xlayer-testnet
+npx hardhat run scripts/deploy.js --network somnia
 
 # Verify
 npx hardhat verify --network xlayer-testnet DEPLOYED_ADDRESS
@@ -496,7 +485,7 @@ npx hardhat verify --network xlayer-testnet DEPLOYED_ADDRESS
 
 ### Contract Addresses
 
-#### XLayer Testnet
+#### Somnia Testnet
 ```
 Factory: 0x7cEb6617962Dd76E96b3227352f0ee9f83FCD2B7
 EntryPoint: 0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789
@@ -504,10 +493,9 @@ SessionKeyModule: 0x...
 SocialRecoveryModule: 0x...
 ```
 
-#### XLayer Mainnet
+#### Sepolia (Source)
 ```
-Factory: 0x...
-EntryPoint: 0x0000000071727De22E5E9d8BAf0edAc6f37da032
+EntryPoint: 0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789
 ```
 
 ## 🔄 Authentication Flow
@@ -618,38 +606,29 @@ async function signWithPasskey(challenge: string) {
 
 ## 🔌 API Integration
 
-### OKX DEX Integration
+### Somnia Bridge Integration
 
-The application integrates with OKX DEX API for cross-chain token swaps:
+The application integrates a minimal bridge flow to Somnia Testnet:
 
 ```typescript
 // Get swap quote
-const response = await fetch('/api/okx/quote', {
+await fetch('/api/bridge/initiate', {
   method: 'POST',
-  body: JSON.stringify({
-    fromChain: 'polygon',
-    toChain: 'arbitrum',
-    fromToken: 'USDC',
-    toToken: 'ETH',
-    amount: '100',
-  }),
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ recipient: smartAccountAddress, amount: '0.001' }),
 });
 
-// Execute swap
-const swapResponse = await fetch('/api/okx/swap', {
+await fetch('/api/bridge/complete', {
   method: 'POST',
-  body: JSON.stringify({
-    quoteId: quote.quoteId,
-    userAddress: smartAccountAddress,
-  }),
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ recipient: smartAccountAddress, amount: '0.001' }),
 });
 ```
 
-### Supported Chains (60+)
+### Networks
 
-- **EVM Chains**: Ethereum, Polygon, Arbitrum, Optimism, BSC, Avalanche, etc.
-- **Layer 2s**: zkSync, StarkNet, Polygon zkEVM, Base, etc.
-- **Alternative L1s**: Solana, Aptos, Sui (coming soon)
+- **Somnia Testnet** (primary demo network)
+- **Sepolia** (source network for bridging demo)
 
 ### Token Support
 
@@ -659,12 +638,12 @@ The application displays token information with proper symbols and images:
 // Token configuration with CDN images
 const SUPPORTED_TOKENS = [
   {
-    symbol: 'OKB',
-    name: 'OKB',
-    address: '0x...',
+    symbol: 'STT',
+    name: 'Somnia Test Token',
+    address: '0x0000000000000000000000000000000000000000',
     decimals: 18,
-    chainId: 195,
-    logoURI: 'https://static.okx.com/cdn/wallet/logo/okb.png',
+    chainId: 50312,
+    logoURI: '/tokens/somnia.avif',
   },
   {
     symbol: 'USDC',
@@ -685,7 +664,7 @@ For ERC-4337 UserOperations:
 ```typescript
 const bundlerClient = createBundlerClient({
   transport: http(BUNDLER_URL),
-  chain: xlayer,
+  chain: somnia,
 });
 
 const userOp = await smartAccount.prepareUserOperation({
@@ -1075,10 +1054,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
   
-**Built with ❤️ for the OKX Hackathon**
 
 *Making DeFi accessible to everyone, everywhere*
 
-[Website](https://oneclick-defi.com) • [Demo](https://demo.oneclick-defi.com) • [Docs](https://docs.oneclick-defi.com)
+[Website](https://somniflow.example.com) • [Demo](https://demo.somniflow.example.com) • [Docs](https://docs.somniflow.example.com)
 
 </div>

@@ -62,6 +62,65 @@ export function BridgeInterface({ userAddress, userEmail, onBridgeComplete }: Br
     setError('');
 
     try {
+      // 对于 sepolia -> somnia，走真实后端 API；其它对保持原模拟逻辑
+      // For sepolia -> somnia, call real backend APIs; otherwise keep simulated flow
+      if (fromNetwork === 'sepolia' && toNetwork === 'somnia') {
+        // 1) 发起（Sepolia）
+        const res1 = await fetch('/api/bridge/initiate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ recipient: userAddress, amount }),
+        });
+        const data1 = await res1.json();
+        if (!res1.ok || !data1?.ok) throw new Error(data1?.error || 'Initiate failed');
+
+        // 设置处理中状态
+        setActiveTx({
+          id: `real_${Date.now()}`,
+          fromNetwork,
+          toNetwork,
+          fromToken: fromToken.symbol,
+          toToken: toToken.symbol,
+          amount,
+          recipient: userAddress,
+          status: 'processing',
+          timestamp: Date.now(),
+          estimatedTime: 120,
+        });
+
+        // 2) 完成（Somnia）
+        const res2 = await fetch('/api/bridge/complete', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ recipient: userAddress, amount }),
+        });
+        const data2 = await res2.json();
+        if (!res2.ok || !data2?.ok) throw new Error(data2?.error || 'Complete failed');
+
+        // 成功收尾
+        const doneTx: BridgeTransaction = {
+          id: `real_${Date.now()}`,
+          fromNetwork,
+          toNetwork,
+          fromToken: fromToken.symbol,
+          toToken: toToken.symbol,
+          amount,
+          recipient: userAddress,
+          status: 'completed',
+          txHash: data2.txHash,
+          timestamp: Date.now(),
+          estimatedTime: 0,
+        };
+        setActiveTx(doneTx);
+        onBridgeComplete?.(doneTx);
+        setIsLoading(false);
+        setAmount('');
+        setQuote(null);
+        setTimeout(() => setActiveTx(null), 10000);
+        return;
+      }
+
+      // 原有模拟逻辑（非 sepolia->somnia）
       const bridgeTx = await crossChainBridge.executeBridge(
         fromNetwork,
         toNetwork,
@@ -73,22 +132,18 @@ export function BridgeInterface({ userAddress, userEmail, onBridgeComplete }: Br
       );
 
       setActiveTx(bridgeTx);
-      
       // Monitor transaction status
       const checkStatus = setInterval(() => {
         const status = crossChainBridge.getBridgeStatus(bridgeTx.id);
         if (status) {
           setActiveTx(status);
-          
           if (status.status === 'completed' || status.status === 'failed') {
             clearInterval(checkStatus);
             setIsLoading(false);
-            
             if (status.status === 'completed') {
               onBridgeComplete?.(status);
               setAmount('');
               setQuote(null);
-              // Auto-clear after 10 seconds
               setTimeout(() => setActiveTx(null), 10000);
             }
           }

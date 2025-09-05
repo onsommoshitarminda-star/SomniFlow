@@ -48,8 +48,8 @@ const nextConfig = {
           {
             key: 'Content-Security-Policy',
             value: process.env.NODE_ENV === 'production'
-              ? "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: blob:; font-src 'self' data:; connect-src 'self' https://www.okx.com https://testrpc.xlayer.tech https://rpc.xlayer.tech wss://rpc.xlayer.tech https://eth-sepolia.public.blastapi.io https://sepolia.drpc.org https://api.pimlico.io; frame-src 'none'; object-src 'none';"
-              : "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: blob:; font-src 'self' data:; connect-src 'self' http://localhost:* ws://localhost:* https://www.okx.com https://testrpc.xlayer.tech https://rpc.xlayer.tech wss://rpc.xlayer.tech https://eth-sepolia.public.blastapi.io https://sepolia.drpc.org https://api.pimlico.io; frame-src 'none'; object-src 'none';"
+              ? "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: blob:; font-src 'self' data:; connect-src 'self' https://dream-rpc.somnia.network https://www.okx.com https://testrpc.xlayer.tech https://rpc.xlayer.tech wss://rpc.xlayer.tech https://eth-sepolia.public.blastapi.io https://sepolia.drpc.org https://api.pimlico.io; frame-src 'none'; object-src 'none';"
+              : "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: blob:; font-src 'self' data:; connect-src 'self' http://localhost:* ws://localhost:* https://dream-rpc.somnia.network https://www.okx.com https://testrpc.xlayer.tech https://rpc.xlayer.tech wss://rpc.xlayer.tech https://eth-sepolia.public.blastapi.io https://sepolia.drpc.org https://api.pimlico.io; frame-src 'none'; object-src 'none';"
           }
         ]
       }
