@@ -273,7 +273,7 @@ export function GoogleSignInWithPasskey({ onSuccess }: GoogleSignInWithPasskeyPr
       <div className="space-y-4">
         <div className="text-center mb-6">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-            Welcome to OneClick DeFi
+            Welcome to SomniFlow
           </h2>
           <p className="text-gray-600 dark:text-gray-400">
             Sign in with Google to get started
@@ -283,7 +283,7 @@ export function GoogleSignInWithPasskey({ onSuccess }: GoogleSignInWithPasskeyPr
         <button
           onClick={handleGoogleSignIn}
           disabled={isLoading}
-          className="w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 py-4 rounded-xl font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition-all transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-3 shadow-md"
+          className="w-full btn-gradient btn-cta btn-neon hover-wobble animate-breathe text-white py-4 rounded-xl font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-lg"
         >
           {isLoading ? (
             <>
@@ -352,7 +352,7 @@ export function GoogleSignInWithPasskey({ onSuccess }: GoogleSignInWithPasskeyPr
         <button
           onClick={handlePasskeyCreation}
           disabled={isLoading}
-          className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2 shadow-lg"
+          className="w-full btn-gradient btn-cta btn-neon hover-wobble animate-breathe text-white py-4 rounded-xl font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg"
         >
           {isLoading ? (
             <>
