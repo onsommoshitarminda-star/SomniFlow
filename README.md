@@ -479,8 +479,6 @@ npx hardhat compile
 # Deploy
 npx hardhat run scripts/deploy.js --network somnia
 
-# Verify
-npx hardhat verify --network xlayer-testnet DEPLOYED_ADDRESS
 ```
 
 ### Contract Addresses
@@ -651,7 +649,6 @@ const SUPPORTED_TOKENS = [
     address: '0x...',
     decimals: 6,
     chainId: 195,
-    logoURI: 'https://static.okx.com/cdn/wallet/logo/usdc.png',
   },
   // ... more tokens
 ];
@@ -718,27 +715,16 @@ const hash = await bundlerClient.sendUserOperation(userOp);
    
    # Set environment variables
    export PRIVATE_KEY=your-private-key
-   export XLAYER_RPC=https://testrpc.xlayer.tech
-   export OKLINK_API_KEY=your-api-key
    
    # Deploy
    forge script script/Deploy.s.sol:DeployScript \
-     --rpc-url $XLAYER_RPC \
+     --rpc-url $Somnia Test Net _RPC \
      --private-key $PRIVATE_KEY \
      --broadcast \
      --verify \
-     --verifier oklink \
-     --verifier-url https://www.oklink.com/api/v5/explorer/contract/verify-source-code-plugin/XLAYER_TESTNET
+
    ```
 
-2. **Mainnet Deployment**
-   ```bash
-   # Update RPC URL
-   export XLAYER_RPC=https://rpc.xlayer.tech
-   
-   # Deploy with same command
-   # IMPORTANT: Test thoroughly on testnet first!
-   ```
 
 ### Production Checklist
 
@@ -962,8 +948,7 @@ localStorage.clear()
 **[2:00-2:30] Technology**
 "We're the first to combine WebAuthn passkeys with ERC-4337 account abstraction. Your private key never leaves your device's secure enclave. Even if someone hacks your email, they can't access your funds without your biometric."
 
-**[2:30-3:00] Impact & Vision**
-"We've reduced DeFi onboarding from 30 minutes to 30 seconds. With OKX's 60+ chain support, users can access any DeFi protocol instantly. This is how we onboard the next billion users to Web3."
+
 
 ### Key Differentiators
 
@@ -1010,9 +995,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- **OKX Team** - For the hackathon opportunity and DEX API
 - **Pimlico** - For ERC-4337 infrastructure
-- **XLayer** - For scalable blockchain platform
 - **WebAuthn Community** - For passkey standards
 - **OpenZeppelin** - For secure contract libraries
 
@@ -1030,7 +1013,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - ERC-4337 implementation
 - Google OAuth setup
 - Basic swap functionality
-- XLayer deployment
 
 ### Phase 2 (In Progress) 🔄
 - Security modules implementation

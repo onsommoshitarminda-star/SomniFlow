@@ -145,8 +145,13 @@ export function Dashboard({ account: initialAccount }: DashboardProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-4">
+              {/*
+                Brand Title (Top-Left)
+                中文说明：将左上角的品牌标题从 "OneClick DeFi" 修改为 "SomniFlow"，以与跨链页面的命名保持一致。
+                English: Change the top-left brand title from "OneClick DeFi" to "SomniFlow" to align with the bridge page naming.
+              */}
               <h1 className="text-2xl font-black bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 text-transparent bg-clip-text animate-gradient">
-                OneClick DeFi
+                SomniFlow
               </h1>
               <NetworkSwitcher
                 currentNetwork={currentNetwork}
@@ -257,8 +262,13 @@ export function Dashboard({ account: initialAccount }: DashboardProps) {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Column - Account Overview */}
-          <div className="lg:col-span-1 space-y-6">
+          {/*
+            Right Column - Account Overview (after swap)
+            中文：左右布局互换后，本列在右侧，包含「Total Balance」与「Your Tokens」。
+            English: After swapping left/right, this column appears on the right and contains
+            the "Total Balance" and "Your Tokens" cards.
+          */}
+          <div className="order-2 lg:order-2 lg:col-span-1 space-y-6">
             {/* Balance Card */}
             <div className="relative bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl p-6 shadow-2xl overflow-hidden">
               <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
@@ -350,8 +360,12 @@ export function Dashboard({ account: initialAccount }: DashboardProps) {
 
           </div>
 
-          {/* Right Column - Main Interface */}
-          <div className="lg:col-span-2">
+          {/*
+            Left Column - Main Interface (Bridge)
+            中文：左右布局互换后，跨链桥主卡片位于左侧，占两列宽度。
+            English: After swapping, the Cross-Chain Bridge main card sits on the left and spans two columns.
+          */}
+          <div className="order-1 lg:order-1 lg:col-span-2">
             {activeTab === 'bridge' && displayAccount.address && initialAccount.email && (
               <BridgeInterface 
                 userAddress={displayAccount.address as Address}
